@@ -8,6 +8,7 @@ use Tanmuhittin\LaravelGoogleTranslate\Api\GoogleApiTranslate;
 use Tanmuhittin\LaravelGoogleTranslate\Api\StichozaApiTranslate;
 use Tanmuhittin\LaravelGoogleTranslate\Api\YandexApiTranslate;
 use Tanmuhittin\LaravelGoogleTranslate\Commands\TranslateFilesCommand;
+use Tanmuhittin\LaravelGoogleTranslate\Commands\UpdateBaseLocaleCommand;
 use Tanmuhittin\LaravelGoogleTranslate\Contracts\ApiTranslatorContract;
 use Tanmuhittin\LaravelGoogleTranslate\Helpers\ConfigHelper;
 use Tanmuhittin\LaravelGoogleTranslate\Translators\ApiTranslate;
@@ -23,7 +24,8 @@ class LaravelGoogleTranslateServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->commands([
-            TranslateFilesCommand::class
+            TranslateFilesCommand::class,
+            UpdateBaseLocaleCommand::class
         ]);
         $this->publishes([
             __DIR__ . '/config/laravel_google_translate.php' => config_path('laravel_google_translate.php'),
